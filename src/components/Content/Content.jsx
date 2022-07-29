@@ -14,6 +14,7 @@ import {
   updateProduct,
   deleteProduct,
 } from '../../api/api';
+import useAxios from '../../utils/useAxios';
 
 export default function Content() {
   const [data, setData] = React.useState([]);
@@ -23,6 +24,9 @@ export default function Content() {
   const [descriptionField, setDescriptionField] = React.useState('');
   const [priceField, setPriceField] = React.useState('');
   const [product, setProduct] = React.useState(null);
+  const [res, setRes] = React.useState('');
+
+  const api = useAxios();
 
   const getData = async () => {
     const res = await getProductsData();
@@ -91,12 +95,22 @@ export default function Content() {
   };
 
   React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await api.get('/test/');
+        setRes(response.data.response);
+      } catch {
+        setRes('Something went wrong');
+      }
+    };
+    fetchData();
     getData();
   }, [product]);
 
   return (
     <>
       <Container>
+        <p>{res}</p>
         <Row className="mt-4 mb-4 align-items-center">
           <Col className="col-10">
             <h3>Lista de Produtos</h3>
