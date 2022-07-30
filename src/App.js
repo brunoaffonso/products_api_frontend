@@ -2,7 +2,6 @@ import Topbar from './components/Topbar/Topbar';
 import Content from './components/Content/Content';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
-// import PrivateRoute from './utils/PrivateRoute';
 import Footer from './components/Footer/Footer';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
@@ -25,11 +24,8 @@ function App() {
                 </RequireAuth>
               }
             />
-            {/* <PrivateRoute component={Content} path="/protected" exact /> */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            {/* <Route component={Home} path="/" /> */}
-            {/* <Route component={Content} path="/" /> */}
           </Routes>
           <Footer></Footer>
         </AuthProvider>
