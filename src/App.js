@@ -26,8 +26,8 @@ function App() {
               }
             />
             {/* <PrivateRoute component={Content} path="/protected" exact /> */}
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             {/* <Route component={Home} path="/" /> */}
             {/* <Route component={Content} path="/" /> */}
           </Routes>
